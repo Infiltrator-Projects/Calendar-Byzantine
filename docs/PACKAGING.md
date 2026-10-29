@@ -13,3 +13,6 @@ The native package has version `VERSION+native1`; the generic release uses `VERS
 The release workflow installs and tests the exact native `.run` on Ubuntu 24.04, seals the three qualified artifacts, stages a draft release, verifies every remotely uploaded byte, and publishes that draft. Published releases are immutable; product changes require advancing `VERSION`. A rerun for a superseded main commit does not publish.
 
 Translations use the provider-owned gettext domain `infiltrator-calendar-byzantine`. The package ships only its own messages in `/usr/share/locale/<language>/LC_MESSAGES/infiltrator-calendar-byzantine.mo`; Common’s combined translation package is not required. The exact compiled catalogues are checked through the provider ABI before packaging.
+
+## Two-file provider payload (v1.0.3)
+Exactly the calendar .so and illustrated PDF are installed. Developer records and standalone translation catalogues remain out of the payload. Native provenance is in Debian X-Infiltrator control fields.
