@@ -49,4 +49,4 @@ Each package owns only this provider and its passive documentation. Its `Replace
 Translations use the provider-owned gettext domain `infiltrator-calendar-byzantine`. The package ships only its own messages in `/usr/share/locale/<language>/LC_MESSAGES/infiltrator-calendar-byzantine.mo`; Common’s combined translation package is not required. The exact compiled catalogues are checked through the provider ABI before packaging.
 
 ## Two-file installed calendar (v1.0.3)
-The native package installs only `Byzantine Anno Mundi Calendar.so` and an illustrated `Byzantine Anno Mundi Calendar.pdf`. Source audits remain in GitHub; native provenance lives in Debian control fields.
+The native package installs only `Byzantine Anno Mundi Calendar.so` and an illustrated `Calendar-Byzantine.pdf`. Source audits remain in GitHub; native provenance lives in Debian control fields.
