@@ -73,13 +73,17 @@ calendar_byzantine_fields_to_jdn(
 {
     gint64 julian_year;
 
-    g_return_val_if_fail(fields != NULL, julian_to_jdn(2000, 1, 1));
+    /* Never substitute a valid civil date for an invalid navigation result:
+     * callers validate the returned JDN using the Julian representable span. */
+    if (fields == NULL || fields->month < 1 || fields->month > 12)
+        return G_MININT64;
 
     julian_year = calendar_i64_subtract_saturating(
         fields->year, fields->month >= 9 ? 5509 : 5508);
-    g_return_val_if_fail(julian_year >= G_MININT &&
-                         julian_year <= G_MAXINT,
-                         julian_to_jdn(2000, 1, 1));
+    if (julian_year < G_MININT || julian_year > G_MAXINT ||
+        fields->day < 1 ||
+        fields->day > calendar_julian_month_length(julian_year, fields->month))
+        return G_MININT64;
 
     return julian_to_jdn((gint)julian_year, fields->month, fields->day);
 }
